@@ -11,8 +11,8 @@ public enum SubsetPredicateResult {
      */
     TOO_MANY(0, 0, 0, 0),
     /**
-     * The subset has not reached the goal value.
-     * Should be used when it is certain that additional elements will move toward the goal.
+     * The subset has not reached the goal.
+     * Should be used when it is certain that additional elements will move nearer to the goal.
      * (e.g. the collection elements always have the same sign).
      */
     TOO_FEW(0, 1, 2, 2),

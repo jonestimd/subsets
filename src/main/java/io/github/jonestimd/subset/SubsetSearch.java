@@ -6,10 +6,22 @@ import java.util.List;
 
 /**
  * This class finds subsets of a collection that match some criteria.  The criteria are specified by an implementation
- * of {@link SubsetPredicate}.  The {@code static} factory methods can be used to create an instance based on the
- * category of the collection.
+ * of {@link SubsetPredicate}.  The {@code static} factory methods can be used to create an instance of this class based
+ * on the category (uniform sign or mixed sign) of the collection.
  *
- * <p><strong>Note:</strong> This class is not thread safe.
+ * <p>The subsets are searched by adding and removing items to a working subset and notifying the predicate.  When an
+ * item is added to the working subset,the predicate returns a {@link SubsetPredicateResult} indicating if the current
+ * subset matches the criteria.  When an item is removed from the working subset, the predicate is notified so that
+ * it can update its state.  For subsets that do not meet the criteria, the predicate can return one of 3 values,
+ * to indicate how the search should proceed.  The first 2 values should be used for uniform sign collections and
+ * the last value should be used for mixed sign collections.
+ * <ul>
+ *     <li>{@link SubsetPredicateResult#TOO_FEW} - items should be added to the subset to move toward the goal</li>
+ *     <li>{@link SubsetPredicateResult#TOO_MANY} - items should be removed from the subset to move toward the goal</li>
+ *     <li>{@link SubsetPredicateResult#NO_MATCH} - it is unknown if items should be added or removed</li>
+ * </ul>
+ *
+ * <p><strong>Note:</strong> This class is not thread safe and each instance should only be accessed by a single thread.
  */
 public abstract class SubsetSearch<T> {
     private SubsetPredicate<T> criteria;

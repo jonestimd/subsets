@@ -35,7 +35,7 @@ public class SubsetSum<V> {
      * @param itemTolerance precision of the items in the collection
      * @param items the collection to search
      * @param adapter a function to extract the value to sum from the collection items
-     * @param maxResults the maximum number of subsets to return
+     * @param maxResults the maximum number of subsets to return (negative for no limit)
      * @return the matching subsets
      */
     public static <T> List<List<T>> subsets(BigDecimal sum, BigDecimal itemTolerance, Collection<T> items, Function<? super T, BigDecimal> adapter, int maxResults) {
@@ -47,7 +47,7 @@ public class SubsetSum<V> {
      * For a collection of {@link BigDecimal}, find the subsets having the specified sum.
      * @param sum the target sum for the subsets
      * @param items the collection to search
-     * @param maxResults the maximum number of subsets to return
+     * @param maxResults the maximum number of subsets to return (negative for no limit)
      * @return the matching subsets
      */
     public static List<List<BigDecimal>> subsets(BigDecimal sum, Collection<BigDecimal> items, int maxResults) {
@@ -56,9 +56,9 @@ public class SubsetSum<V> {
     }
 
     /**
-     * For a collection of {@link BigDecimal}, find the subsets having the specified sum.
+     * For a collection of {@link BigDecimal}, find a subset having the specified sum.
      * @param sum the target sum for the subsets
-     * @param items the collection to search
+     * @param items the collection to search (negative for no limit)
      * @return the matching subsets
      */
     public static List<BigDecimal> subset(BigDecimal sum, Collection<BigDecimal> items) {
@@ -78,7 +78,7 @@ public class SubsetSum<V> {
      * For a collection of numbers, find the subsets having the specified sum.
      * @param sum the target sum for the subsets
      * @param items the collection to search
-     * @param maxResults the maximum number of subsets to return
+     * @param maxResults the maximum number of subsets to return (negative for no limit)
      * @return the matching subsets
      */
     public static <T extends Number> List<List<T>> subsets(Collection<T> items, T sum, int maxResults) {
@@ -86,7 +86,7 @@ public class SubsetSum<V> {
     }
 
     /**
-     * For a collection of numbers, find the subsets having the specified sum.
+     * For a collection of whole numbers, find a subset having the specified sum (uses Number.longValue()).
      * @param sum the target sum for the subsets
      * @param items the collection to search
      * @return the matching subsets
@@ -105,7 +105,7 @@ public class SubsetSum<V> {
      * @param items the collection to search
      * @param sum the target sum for the subsets
      * @param itemTolerance precision of the items in the collection
-     * @param maxResults the maximum number of subsets to return
+     * @param maxResults the maximum number of subsets to return (negative for no limit)
      * @param adapter a function to extract the value to sum from the collection items
      * @return the matching subsets
      */

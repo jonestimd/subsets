@@ -45,7 +45,7 @@ artifacts {
     archives javadocJar, sourceJar
 }
 
-signing {
+if (hasProperty('signing.keyId')) signing {
     sign configurations.archives
 }
 
@@ -54,7 +54,7 @@ uploadArchives {
         mavenDeployer {
             beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
-            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+            if (hasProperty('ossrhUsername')) repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
                 authentication(userName: ossrhUsername, password: ossrhPassword)
             }
 

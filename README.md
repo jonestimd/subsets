@@ -1,4 +1,5 @@
 # subsets
+![BUild Status](https://travis-ci.org/jonestimd/subsets.svg?branch=master)
 
 A Java library that provides utilities for finding subsets of a collection that meet some criteria.
 
